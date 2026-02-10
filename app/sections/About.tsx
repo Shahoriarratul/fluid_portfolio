@@ -5,7 +5,6 @@ import AnimatedTextLine from '../components/AnimatedTextLine';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import path from 'path/win32';
 gsap.registerPlugin(ScrollTrigger);
 
 type Props = {};
