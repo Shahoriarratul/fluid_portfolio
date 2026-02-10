@@ -6,6 +6,7 @@ import ServiceSummery from './sections/ServiceSummery';
 import Services from './sections/Services';
 import ReactLenis from 'lenis/react';
 import About from './sections/About';
+import Works from './sections/Works';
 
 export default function Home() {
   return (
@@ -18,9 +19,7 @@ export default function Home() {
       <ServiceSummery />
       <Services />
       <About />
-      <section className='min-h-screen' />
-      <section className='min-h-screen' />
-      <section className='min-h-screen' />
+      <Works />
     </ReactLenis>
   );
 }
