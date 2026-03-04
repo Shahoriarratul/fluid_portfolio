@@ -2,7 +2,7 @@
 import { Icon } from '@iconify/react';
 import gsap from 'gsap';
 import { Observer } from 'gsap/all';
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 gsap.registerPlugin(Observer);
 type Props = {
   items: string[];
@@ -52,132 +52,118 @@ const Marquee = ({
     scaleX?: number;
   }
 
-  interface HorizontalLoopState {
-    length: number;
-    startX: number;
-    times: number[];
-    widths: number[];
-    xPercents: number[];
-    curIndex: number;
-    pixelsPerSecond: number;
-    totalWidth: number;
-    curX: number;
-    distanceToStart: number;
-    distanceToLoop: number;
-  }
-
-  function horizontalLoop(
-    items: HorizontalLoopItem[] | NodeListOf<Element>,
-    config?: HorizontalLoopConfig,
-  ): HorizontalLoopTimeline {
-    items = gsap.utils.toArray(items) as HorizontalLoopItem[];
-    config = config || {};
-    let tl = gsap.timeline({
+  const horizontalLoop = useCallback(
+    (
+      items: HorizontalLoopItem[] | NodeListOf<Element>,
+      config?: HorizontalLoopConfig,
+    ): HorizontalLoopTimeline => {
+      items = gsap.utils.toArray(items) as HorizontalLoopItem[];
+      config = config || {};
+      const tl = gsap.timeline({
         repeat: config.repeat,
         paused: config.paused,
         defaults: { ease: 'none' },
         onReverseComplete: () => {
           tl.totalTime(tl.rawTime() + tl.duration() * 100);
         },
-      }) as HorizontalLoopTimeline,
-      length = items.length,
-      startX = items[0].offsetLeft,
-      times: number[] = [],
-      widths: number[] = [],
-      xPercents: number[] = [],
-      curIndex = 0,
-      pixelsPerSecond = (config.speed || 1) * 100,
-      snap = (v: number): number =>
-        config.snap === false ? v : gsap.utils.snap(config.snap || 1)(v),
-      totalWidth: number,
-      curX: number,
-      distanceToStart: number,
-      distanceToLoop: number,
-      item: HorizontalLoopItem,
-      i: number;
-    gsap.set(items, {
-      xPercent: (i: number, el: any) => {
-        let w = (widths[i] = parseFloat(
-          gsap.getProperty(el, 'width', 'px') as string,
-        ));
-        xPercents[i] = snap(
-          (parseFloat(gsap.getProperty(el, 'x', 'px') as string) / w) * 100 +
-            (gsap.getProperty(el, 'xPercent') as number),
-        );
-        return xPercents[i];
-      },
-    });
-    gsap.set(items, { x: 0 });
-    totalWidth =
-      items[length - 1].offsetLeft +
-      (xPercents[length - 1] / 100) * widths[length - 1] -
-      startX +
-      items[length - 1].offsetWidth *
-        (gsap.getProperty(items[length - 1], 'scaleX') as number) +
-      (parseFloat(config.paddingRight as string) || 0);
-    for (i = 0; i < length; i++) {
-      item = items[i];
-      curX = (xPercents[i] / 100) * widths[i];
-      distanceToStart = item.offsetLeft + curX - startX;
-      distanceToLoop =
-        distanceToStart +
-        widths[i] * (gsap.getProperty(item, 'scaleX') as number);
-      tl.to(
-        item,
-        {
-          xPercent: snap(((curX - distanceToLoop) / widths[i]) * 100),
-          duration: distanceToLoop / pixelsPerSecond,
+      }) as HorizontalLoopTimeline;
+      const length = items.length;
+      const startX = items[0].offsetLeft;
+      const times: number[] = [];
+      const widths: number[] = [];
+      const xPercents: number[] = [];
+      let curIndex = 0;
+      const pixelsPerSecond = (config.speed || 1) * 100;
+      const snap = (v: number): number =>
+        config.snap === false ? v : gsap.utils.snap(config.snap || 1)(v);
+
+      gsap.set(items, {
+        xPercent: (i: number, el: Element) => {
+          const w = (widths[i] = parseFloat(
+            gsap.getProperty(el, 'width', 'px') as string,
+          ));
+          xPercents[i] = snap(
+            (parseFloat(gsap.getProperty(el, 'x', 'px') as string) / w) * 100 +
+              (gsap.getProperty(el, 'xPercent') as number),
+          );
+          return xPercents[i];
         },
-        0,
-      )
-        .fromTo(
+      });
+      gsap.set(items, { x: 0 });
+      const totalWidth =
+        items[length - 1].offsetLeft +
+        (xPercents[length - 1] / 100) * widths[length - 1] -
+        startX +
+        items[length - 1].offsetWidth *
+          (gsap.getProperty(items[length - 1], 'scaleX') as number) +
+        (parseFloat(config.paddingRight as string) || 0);
+      for (let i = 0; i < length; i++) {
+        const item = items[i];
+        const curX = (xPercents[i] / 100) * widths[i];
+        const distanceToStart = item.offsetLeft + curX - startX;
+        const distanceToLoop =
+          distanceToStart +
+          widths[i] * (gsap.getProperty(item, 'scaleX') as number);
+        tl.to(
           item,
           {
-            xPercent: snap(
-              ((curX - distanceToLoop + totalWidth) / widths[i]) * 100,
-            ),
+            xPercent: snap(((curX - distanceToLoop) / widths[i]) * 100),
+            duration: distanceToLoop / pixelsPerSecond,
           },
-          {
-            xPercent: xPercents[i],
-            duration:
-              (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond,
-            immediateRender: false,
-          },
-          distanceToLoop / pixelsPerSecond,
+          0,
         )
-        .add('label' + i, distanceToStart / pixelsPerSecond);
-      times[i] = distanceToStart / pixelsPerSecond;
-    }
-    function toIndex(
-      index: number,
-      vars?: HorizontalLoopVars,
-    ): gsap.core.Tween {
-      vars = vars || {};
-      Math.abs(index - curIndex) > length / 2 &&
-        (index += index > curIndex ? -length : length);
-      let newIndex = gsap.utils.wrap(0, length, index),
-        time = times[newIndex];
-      if (time > tl.time() !== index > curIndex) {
-        vars.modifiers = { time: gsap.utils.wrap(0, tl.duration()) };
-        time += tl.duration() * (index > curIndex ? 1 : -1);
+          .fromTo(
+            item,
+            {
+              xPercent: snap(
+                ((curX - distanceToLoop + totalWidth) / widths[i]) * 100,
+              ),
+            },
+            {
+              xPercent: xPercents[i],
+              duration:
+                (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond,
+              immediateRender: false,
+            },
+            distanceToLoop / pixelsPerSecond,
+          )
+          .add('label' + i, distanceToStart / pixelsPerSecond);
+        times[i] = distanceToStart / pixelsPerSecond;
       }
-      curIndex = newIndex;
-      vars.overwrite = true;
-      return tl.tweenTo(time, vars);
-    }
-    tl.next = (vars?: HorizontalLoopVars) => toIndex(curIndex + 1, vars);
-    tl.previous = (vars?: HorizontalLoopVars) => toIndex(curIndex - 1, vars);
-    tl.current = () => curIndex;
-    tl.toIndex = (index: number, vars?: HorizontalLoopVars) =>
-      toIndex(index, vars);
-    tl.times = times;
-    tl.progress(1, true).progress(0, true);
-    if (config.reversed) {
-      tl.vars.onReverseComplete?.();
-      tl.reverse();
-    }
-    return tl;
-  }
+      function toIndex(
+        index: number,
+        vars?: HorizontalLoopVars,
+      ): gsap.core.Tween {
+        vars = vars || {};
+        let targetIndex = index;
+        if (Math.abs(targetIndex - curIndex) > length / 2) {
+          targetIndex += targetIndex > curIndex ? -length : length;
+        }
+        const newIndex = gsap.utils.wrap(0, length, targetIndex);
+        let time = times[newIndex];
+        if (time > tl.time() !== targetIndex > curIndex) {
+          vars.modifiers = { time: gsap.utils.wrap(0, tl.duration()) };
+          time += tl.duration() * (targetIndex > curIndex ? 1 : -1);
+        }
+        curIndex = newIndex;
+        vars.overwrite = true;
+        return tl.tweenTo(time, vars);
+      }
+      tl.next = (vars?: HorizontalLoopVars) => toIndex(curIndex + 1, vars);
+      tl.previous = (vars?: HorizontalLoopVars) => toIndex(curIndex - 1, vars);
+      tl.current = () => curIndex;
+      tl.toIndex = (index: number, vars?: HorizontalLoopVars) =>
+        toIndex(index, vars);
+      tl.times = times;
+      tl.progress(1, true).progress(0, true);
+      if (config.reversed) {
+        tl.vars.onReverseComplete?.();
+        tl.reverse();
+      }
+      return tl;
+    },
+    [],
+  );
 
   useEffect(() => {
     const tl = horizontalLoop(
@@ -208,7 +194,7 @@ const Marquee = ({
     return () => {
       tl.kill();
     };
-  }, [items, reverse]);
+  }, [items, reverse, horizontalLoop]);
   return (
     <div
       ref={containerRef}
@@ -231,7 +217,6 @@ const Marquee = ({
           </span>
         ))}
       </div>
-      Marquee
     </div>
   );
 };
