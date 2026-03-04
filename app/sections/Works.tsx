@@ -127,64 +127,64 @@ function Works() {
                 }
               }}
             >
-            {/* overlay */}
-            <div
-              ref={(el) => {
-                overLayRefs.current[index] = el;
-              }}
-              className='absolute inset-0 hidden md:block duration-200 bg-black -z-10 clip-path'
-            />
-            {/*Titel*/}
-            <div className='flex justify-between px-10 text-black transition-all duration-700 md:group-hover:px-12 md:group-hover:text-white'>
-              <h2 className='lg:text-[32px] text-[26px] leading-none'>
-                {project.name}
-              </h2>
-              <Icon
-                icon='uit:arrow-up-right'
-                className='md:size-6 size-5'
+              {/* overlay */}
+              <div
+                ref={(el) => {
+                  overLayRefs.current[index] = el;
+                }}
+                className='absolute inset-0 hidden md:block duration-200 bg-black -z-10 clip-path'
               />
-            </div>
-            <div className='w-full h-0.5 bg-black/80' />
-            <div className='flex px-10 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12'>
-              {project.frameworks.map((framework) => (
-                <p
-                  key={framework.id}
-                  className='text-black transition-colors duration-500 md:group-hover:text-white'
-                >
-                  {framework.name}
-                </p>
-              ))}
-            </div>
-            {githubLink && (
-              <div className='px-10 mt-2'>
-                <a
-                  href={githubLink}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  onClick={(event) => event.stopPropagation()}
-                  className='inline-flex items-center gap-2 px-4 py-2 text-xs uppercase border rounded-full md:text-sm border-black/70 text-black md:group-hover:border-white md:group-hover:text-white transition-colors duration-500'
-                >
-                  <Icon
-                    icon='mdi:github'
-                    className='size-4'
-                  />
-                  View Code
-                </a>
+              {/*Titel*/}
+              <div className='flex justify-between px-10 text-black transition-all duration-700 md:group-hover:px-12 md:group-hover:text-white'>
+                <h2 className='lg:text-[32px] text-[26px] leading-none'>
+                  {project.name}
+                </h2>
+                <Icon
+                  icon='uit:arrow-up-right'
+                  className='md:size-6 size-5'
+                />
               </div>
-            )}
-            {/* mobile preview image */}
-            <div className='relative flex item-center justify-center px-10 md:hidden h-[400px]'>
-              <img
-                src={project.bgImage}
-                alt={`${project.name}bg-image`}
-                className='object-cover w-full h-full rounded-md brightness-50'
-              />
-              <img
-                src={project.image}
-                alt={`${project.name} image`}
-                className='absolute bg-center px-14 rounded-xl'
-              />
-            </div>
+              <div className='w-full h-0.5 bg-black/80' />
+              <div className='flex px-10 text-xs leading-loose uppercase transition-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12'>
+                {project.frameworks.map((framework) => (
+                  <p
+                    key={framework.id}
+                    className='text-black transition-colors duration-500 md:group-hover:text-white'
+                  >
+                    {framework.name}
+                  </p>
+                ))}
+              </div>
+              {githubLink && (
+                <div className='px-10 mt-2'>
+                  <a
+                    href={githubLink}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    onClick={(event) => event.stopPropagation()}
+                    className='inline-flex items-center gap-2 px-4 py-2 text-xs uppercase border rounded-full md:text-sm border-black/70 text-black md:group-hover:border-white md:group-hover:text-white transition-colors duration-500'
+                  >
+                    <Icon
+                      icon='mdi:github'
+                      className='size-4'
+                    />
+                    View Code
+                  </a>
+                </div>
+              )}
+              {/* mobile preview image */}
+              <div className='relative flex item-center justify-center px-10 md:hidden h-[400px]'>
+                <img
+                  src={project.bgImage}
+                  alt={`${project.name}bg-image`}
+                  className='object-cover w-full h-full rounded-md brightness-50'
+                />
+                <img
+                  src={project.image}
+                  alt={`${project.name} image`}
+                  className='absolute bg-center px-14 rounded-xl'
+                />
+              </div>
             </div>
           );
         })}
