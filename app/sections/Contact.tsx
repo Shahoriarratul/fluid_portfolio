@@ -3,19 +3,16 @@ import { useGSAP } from '@gsap/react';
 import AnimatedHeaderSection from '../components/AnimatedHeaderSection';
 import Marquee from '../components/Marquee';
 import { socials } from '../constants';
-import { use } from 'react';
 import gsap from 'gsap';
 
-type Props = {};
-
-function Contact({}: Props) {
+function Contact() {
   const items = [
-    'Just imagine and i code',
-    'Just imagine and i code',
-    'Just imagine and i code',
+    'Available for web roles',
+    'Available for web roles',
+    'Available for web roles',
   ];
   const text =
-    "Got any questions or want to work together? Feel free to reach out to me through any of the platforms below. I'm always open to discussing.";
+    'Interested in frontend or full-stack opportunities. Feel free to connect for roles, projects, or technical collaboration.';
   useGSAP(() => {
     gsap.from('.social-link', {
       y: 100,
@@ -36,7 +33,7 @@ function Contact({}: Props) {
     >
       <div>
         <AnimatedHeaderSection
-          subtitle={"let's build something great together"}
+          subtitle={'Let us build modern web experiences'}
           title={'Contact'}
           text={text}
           textColor={'text-white'}

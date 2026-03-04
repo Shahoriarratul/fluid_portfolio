@@ -8,15 +8,13 @@ import { ScrollTrigger } from 'gsap/all';
 import gsap from 'gsap';
 gsap.registerPlugin(ScrollTrigger);
 
-type Props = {};
-
-function Services({}: Props) {
+function Services() {
   const serviceRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [isDesktop, setIsDesktop] = useState(false); // consistent on SSR/first render
   const mqDesktop = useMediaQuery({ minWidth: '48rem' });
   const [isMounted, setIsMounted] = useState(false);
   const text =
-    'I build secure high performance web applications that are scalable and maintainable, using the latest technologies and best practices in the industry.';
+    'Core technical strengths across frontend development, backend integration, databases, and delivery workflows from the current CV profile.';
 
   useEffect(() => {
     setIsMounted(true);
@@ -45,9 +43,9 @@ function Services({}: Props) {
       className='min-h-screen rounded bg-black rounded-t-4xl'
     >
       <AnimatedHeaderSection
-        subtitle={'Behind the scence, Beyond the screen'}
+        subtitle={'From interface to infrastructure'}
         text={text}
-        title={'service'}
+        title={'Skills'}
         textColor={'text-white'}
         withScrollTrigger={true}
       />

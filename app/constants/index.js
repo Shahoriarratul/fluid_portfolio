@@ -1,78 +1,78 @@
 // index.js
 export const servicesData = [
   {
-    title: "FullStack Development",
+    title: "Frontend Development",
     description:
-      "Your business deserves a fast, secure, and future-proof digital foundation. I develop custom web apps with clean architecture, optimized databases, and seamless integrations—ensuring reliability at every layer.",
+      "Building modern web interfaces with React and Next.js, with focus on responsiveness, SEO, and performance optimization.",
     items: [
       {
-        title: "Backend Engineering",
-        description: "(REST/GraphQL APIs, Microservices, Auth Systems)",
+        title: "React & Next.js",
+        description: "(SSR, SSG, ISR, reusable component architecture)",
       },
       {
-        title: "Frontend Excellence",
-        description: "(React, Vue, TypeScript, Interactive UI/UX)",
+        title: "TypeScript & JavaScript",
+        description: "(Clean code, maintainability, ES6+)",
       },
       {
-        title: "Database Design",
-        description: "(SQL/NoSQL Optimization, Scalable Structures)",
+        title: "UI/UX Implementation",
+        description: "(Tailwind CSS, responsive design, animation workflows)",
       },
     ],
   },
   {
-    title: "DevOps & Cloud Solutions",
+    title: "Backend Integration",
     description:
-      "Deploying software shouldn't be a gamble. I automate infrastructure, enforce security, and leverage cloud platforms (AWS/Azure) to keep your app running smoothly—24/7, at any scale.",
+      "Integrating robust backend features for production-ready apps using API routes, authentication, and validation.",
     items: [
       {
-        title: "CI/CD Pipelines",
-        description: "(GitHub Actions, Docker, Kubernetes)",
+        title: "API Development",
+        description: "(Next.js API Routes, Express.js, REST APIs)",
       },
       {
-        title: "Server Management ",
-        description: "(Linux, Nginx, Load Balancing)",
+        title: "Authentication",
+        description: "(Next-Auth, Clerk, role-based access)",
       },
       {
-        title: "Performance Tuning",
-        description: "(Caching, Compression, Lighthouse 90+ Scores)",
+        title: "Data Validation",
+        description: "(Zod schemas and secure request handling)",
       },
     ],
   },
   {
-    title: "Security & Optimization",
+    title: "Database & State",
     description:
-      "Slow or hacked apps destroy trust. I harden security (XSS/SQLI protection, OAuth) and optimize bottlenecks so your app stays fast, safe, and scalable as you grow.",
+      "Working with SQL and NoSQL data layers plus scalable client state and data-fetching patterns.",
     items: [
       {
-        title: "Code Audits",
-        description: "(Refactoring, Tech Debt Cleanup)",
+        title: "Databases",
+        description: "(MongoDB, PostgreSQL, MySQL, Prisma ORM)",
       },
       {
-        title: "Pen Testing",
-        description: "(Vulnerability Assessments)",
+        title: "State Management",
+        description: "(Redux, Context API, SWR)",
       },
       {
-        title: "SEO Tech Stack",
-        description: "(SSR, Metadata, Structured Data)",
+        title: "Performance",
+        description: "(Web vitals, optimized rendering and data flow)",
       },
     ],
   },
   {
-    title: "Web & Mobile Apps",
+    title: "Tools & Delivery",
     description:
-      "A clunky interface can sink even the best ideas. I craft responsive, pixel perfect web and mobile apps (React Native/Flutter) that users love—bridging design and functionality seamlessly.",
+      "Shipping complete products with strong tooling, testing practices, and modern deployment pipelines.",
     items: [
       {
-        title: "Cross-Platform Apps",
-        description: "(Single codebase for iOS/Android/Web)",
+        title: "Developer Tools",
+        description: "(Git/GitHub, Figma collaboration, Vercel deployment)",
       },
       {
-        title: "PWAs",
-        description: "(Offline mode, Push Notifications)",
+        title: "Testing",
+        description: "(Jest, React Testing Library)",
       },
       {
-        title: "E-Commerce",
-        description: "(Checkout flows, Payment Gateways, Inventory APIs)",
+        title: "Continuous Learning",
+        description: "(MSc in High Integrity Systems, latest web technologies)",
       },
     ],
   },
@@ -80,102 +80,101 @@ export const servicesData = [
 export const projects = [
   {
     id: 1,
-    name: "Mobile Accessories E-commerce",
+    name: "UpScale - Online Learning Platform",
     description:
-      "An online store specializing in phone accessories including cases, chargers, cables, and power banks with MagSafe compatibility.",
-    href: "",
-    image: "/assets/projects/mobile-accessories-store.jpg",
+      "Full-stack learning platform with role-based workflows, modern UI, and production-ready architecture.",
+    href: "https://online-learning-platform-5lqm.vercel.app",
+    gitLink: "https://github.com/Shahoriarratul/online_learning_platform",
+    image: "/assets/projects/UpScale.png",
     bgImage: "/assets/backgrounds/blanket.jpg",
     frameworks: [
-      { id: 1, name: "React" },
-      { id: 2, name: "Next.js" },
-      { id: 3, name: "Node.js" },
-      { id: 4, name: "MongoDB" },
-      { id: 5, name: "Tailwind CSS" },
+      { id: 1, name: "Next.js" },
+      { id: 2, name: "React" },
+      { id: 3, name: "Tailwind CSS" },
+      { id: 4, name: "Prisma" },
+      { id: 5, name: "MySQL" },
+      { id: 6, name: "Clerk" },
     ],
   },
   {
     id: 2,
-    name: "Plant Shop E-commerce",
+    name: "Fast Pizza - Delivery App",
     description:
-      "An online store specializing in rare and decorative plants with a clean, user-friendly interface.",
-    href: "",
+      "A fast and responsive pizza delivery interface built with vanilla React and CSS fundamentals.",
+    href: "https://github.com/Shahoriarratul",
     image: "/assets/projects/plant-shop.jpg",
     bgImage: "/assets/backgrounds/curtains.jpg",
     frameworks: [
       { id: 1, name: "React" },
-      { id: 2, name: "Next.js" },
-      { id: 3, name: "Stripe API" },
-      { id: 4, name: "Tailwind CSS" },
+      { id: 2, name: "CSS" },
+      { id: 3, name: "UI Components" },
+      { id: 4, name: "Routing" },
     ],
   },
   {
     id: 3,
-    name: "Apple Tech Marketplace",
+    name: "Next.js App Architecture",
     description:
-      "An e-commerce platform for Apple products and accessories with deals and category filtering.",
+      "Hands-on experience with pages router, API routes, and scalable component patterns for maintainable frontend systems.",
     href: "",
     image: "/assets/projects/apple-tech-store.jpg",
     bgImage: "/assets/backgrounds/map.jpg",
     frameworks: [
-      { id: 1, name: "Blazor" },
-      { id: 2, name: "ASP.NET Core" },
-      { id: 3, name: "SQL Server" },
-      { id: 4, name: "Bootstrap" },
+      { id: 1, name: "Next.js Pages Router" },
+      { id: 2, name: "TypeScript" },
+      { id: 3, name: "REST API Integration" },
+      { id: 4, name: "SEO Best Practices" },
     ],
   },
   {
     id: 4,
-    name: "Electronics & Gadgets Store",
+    name: "Backend & API Integration",
     description:
-      "A multi-category online shop featuring electronics, home appliances, and gaming gear with special offers.",
+      "Building backend-connected web applications with authentication, validation, and reliable data handling.",
     href: "",
     image: "/assets/projects/electronics-store.jpg",
     bgImage: "/assets/backgrounds/poster.jpg",
     frameworks: [
-      { id: 1, name: "Vue.js" },
-      { id: 2, name: "Laravel" },
-      { id: 3, name: "MySQL" },
-      { id: 4, name: "SCSS" },
+      { id: 1, name: "Node.js" },
+      { id: 2, name: "Express.js" },
+      { id: 3, name: "Next.js API Routes" },
+      { id: 4, name: "Zod Validation" },
     ],
   },
   {
     id: 5,
-    name: "Home Decor Marketplace",
+    name: "Data & State Management",
     description:
-      "A curated collection of designer home decor items, including furniture and artisan vases.",
+      "Implementing efficient data patterns across SQL/NoSQL stores and frontend state for responsive user experiences.",
     href: "",
     image: "/assets/projects/home-decor-store.jpg",
     bgImage: "/assets/backgrounds/table.jpg",
     frameworks: [
-      { id: 1, name: "Angular" },
-      { id: 2, name: "Firebase" },
-      { id: 3, name: "GraphQL" },
-      { id: 4, name: "Material UI" },
+      { id: 1, name: "MongoDB" },
+      { id: 2, name: "PostgreSQL" },
+      { id: 3, name: "Prisma" },
+      { id: 4, name: "Redux" },
+      { id: 5, name: "SWR" },
     ],
   },
   {
     id: 6,
-    name: "Digital Game Store",
+    name: "Academic & Research Foundation",
     description:
-      "A gaming platform featuring discounted titles, top sellers, and genre-based browsing.",
+      "MSc student in High Integrity Systems and recipient of National Science and Technology Fellowship for research in opportunistic network routing.",
     href: "",
     image: "/assets/projects/game-store.jpg",
     bgImage: "/assets/backgrounds/curtains.jpg",
     frameworks: [
-      { id: 1, name: "Svelte" },
-      { id: 2, name: "Node.js" },
-      { id: 3, name: "MongoDB" },
-      { id: 4, name: "Chakra UI" },
+      { id: 1, name: "High Integrity Systems" },
+      { id: 2, name: "ICT" },
+      { id: 3, name: "IELTS C1" },
+      { id: 4, name: "Research Fellowship" },
     ],
   },
 ];
 export const socials = [
-  { name: "Instagram", href: "https://www.instagram.com/ali.sanatidev/reels/" },
-  {
-    name: "Youtube",
-    href: "https://www.youtube.com/channel/UCZhtUWTtk3bGJiMPN9T4HWA",
-  },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/ali-sanati/" },
-  { name: "GitHub", href: "https://github.com/Ali-Sanati" },
+  { name: "GitHub", href: "https://github.com/Shahoriarratul" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/shahoriar-ratul/" },
+  { name: "Email", href: "mailto:shahoriar.ratul@gmail.com" },
 ];

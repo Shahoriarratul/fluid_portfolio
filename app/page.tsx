@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import React, { useEffect } from 'react';
 import Navbar from './sections/Navbar';
 import Hero from './sections/Hero';
@@ -31,9 +30,10 @@ export default function Home() {
             Loading {Math.floor(progress)}%
           </p>
           <div className='relative h-1 overflow-hidden rounded w-60 bg-white/20'>
-          <div className='absolute top-0 left-0 h-full transition-all duration-300 bg-white' style={{ width: `${progress}%` }}></div>
-
-          
+            <div
+              className='absolute top-0 left-0 h-full transition-all duration-300 bg-white'
+              style={{ width: `${progress}%` }}
+            ></div>
           </div>
         </div>
       )}

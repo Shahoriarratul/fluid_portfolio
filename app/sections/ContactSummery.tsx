@@ -4,25 +4,23 @@ import Marquee from '../components/Marquee';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
-type Props = {};
-
-const ContactSummery = (props: Props) => {
+const ContactSummery = () => {
   const containerRef = useRef(null);
   const items = [
-    'innovation',
-    'precision',
-    'trust',
-    'collaboration',
-    'excellence',
-    'creativity',
+    'clean code',
+    'performance',
+    'seo-friendly',
+    'scalable',
+    'accessible',
+    'maintainable',
   ];
   const items2 = [
-    'contact me',
-    'contact me',
-    'contact me',
-    'contact me',
-    'contact me',
-    'contact me',
+    'let us connect',
+    'let us connect',
+    'let us connect',
+    'let us connect',
+    'let us connect',
+    'let us connect',
   ];
 
   useGSAP(() => {
@@ -45,10 +43,10 @@ const ContactSummery = (props: Props) => {
       <Marquee items={items} />
       <div className='overflow-hidden font-light text-center contact-text-responsive'>
         <p>
-          "let's build a <br />
-          <span className='font-normal'>memorable</span>& {''}
-          <span className='italic'>inspiring</span> <br />
-          web application <span className='text-gold'>together</span> "
+          &quot;building <br />
+          <span className='font-normal'>fast</span> and {''}
+          <span className='italic'>reliable</span> <br />
+          web apps <span className='text-gold'>together</span>&quot;
         </p>
       </div>
       <Marquee

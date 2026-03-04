@@ -5,9 +5,7 @@ import React from 'react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
-type Props = {};
-
-const ServiceSummery = (props: Props) => {
+const ServiceSummery = () => {
   useGSAP(() => {
     gsap.to('#titel-service-1', {
       xPercent: 20,
@@ -41,31 +39,31 @@ const ServiceSummery = (props: Props) => {
   return (
     <section className='mt-20 overflow-hidden font-light leading-snug text-center mb-42 contact-text-responsive'>
       <div id='titel-service-1'>
-        <p>Architecture</p>
+        <p>Next.js</p>
       </div>
       <div
         id='titel-service-2'
         className='flex items-center justify-center gap-3 translate-x-16'
       >
-        <p className='font-normal'>Development</p>
+        <p className='font-normal'>React</p>
         <div className='w-10 h-1 md:w-32 bg-gold' />
-        <p>Deployment</p>
+        <p>TypeScript</p>
       </div>
       <div
         id='titel-service-3'
         className='flex items-center justify-center gap-3 translate-x-48'
       >
-        <p>APIs</p>
+        <p>REST APIs</p>
         <div className='w-10 h-1 md:w-32 bg-gold' />
-        <p className='italic'>Frontend</p>
+        <p className='italic'>Prisma</p>
         <div className='w-10 h-1 md:w-32 bg-gold' />
-        <p>Scalability</p>
+        <p>Performance</p>
       </div>
       <div
         id='titel-service-4'
         className='translate-x-48'
       >
-        <p>Databases</p>
+        <p>Web Vitals</p>
       </div>
     </section>
   );

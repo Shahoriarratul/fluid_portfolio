@@ -1,5 +1,5 @@
 'use client';
-import { use, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import AnimatedHeaderSection from '../components/AnimatedHeaderSection';
 import { projects } from '../constants';
 import { Icon } from '@iconify/react';
@@ -7,13 +7,11 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/all';
 
-type Props = {};
-
-function Works({}: Props) {
+function Works() {
   const overLayRefs = useRef<(HTMLDivElement | null)[]>([]);
   const previewRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
-  const text = `featured projects that showcase my skills and creativity. Each project is a testament to my dedication to crafting exceptional digital experiences, blending innovative design with seamless functionality. Explore my portfolio to see how I bring ideas to life through code and creativity.`;
+  const text = `Selected projects and technical highlights from portfolio, showcasing practical implementation in modern web development and performance-focused engineering.`;
   const moveX = useRef<gsap.QuickToFunc | null>(null);
   const moveY = useRef<gsap.QuickToFunc | null>(null);
   const mouse = useRef({ x: 0, y: 0 });
@@ -101,7 +99,7 @@ function Works({}: Props) {
       className='flex flex-col min-h-screen'
     >
       <AnimatedHeaderSection
-        subtitle={'Logic meets aesthetics seamlessly'}
+        subtitle={'Real projects with modern stack'}
         title={'Works'}
         text={text}
         textColor={'text-black'}
@@ -111,14 +109,24 @@ function Works({}: Props) {
         className='relative flex flex-col font-light'
         onMouseMove={handleMouseMove}
       >
-        {projects.map((project, index) => (
-          <div
-            key={project.id}
-            id='project'
-            className='relative flex flex-col gap-1 py-5 cursor-pointer group md:gap-0'
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={() => handleMouseLeave(index)}
-          >
+        {projects.map((project, index) => {
+          const githubLink =
+            project.gitLink ||
+            (project.href?.includes('github.com') ? project.href : '');
+
+          return (
+            <div
+              key={project.id}
+              id='project'
+              className='relative flex flex-col gap-1 py-5 cursor-pointer group md:gap-0'
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={() => handleMouseLeave(index)}
+              onClick={() => {
+                if (project.href) {
+                  window.open(project.href, '_blank');
+                }
+              }}
+            >
             {/* overlay */}
             <div
               ref={(el) => {
@@ -147,6 +155,23 @@ function Works({}: Props) {
                 </p>
               ))}
             </div>
+            {githubLink && (
+              <div className='px-10 mt-2'>
+                <a
+                  href={githubLink}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  onClick={(event) => event.stopPropagation()}
+                  className='inline-flex items-center gap-2 px-4 py-2 text-xs uppercase border rounded-full md:text-sm border-black/70 text-black md:group-hover:border-white md:group-hover:text-white transition-colors duration-500'
+                >
+                  <Icon
+                    icon='mdi:github'
+                    className='size-4'
+                  />
+                  View Code
+                </a>
+              </div>
+            )}
             {/* mobile preview image */}
             <div className='relative flex item-center justify-center px-10 md:hidden h-[400px]'>
               <img
@@ -160,8 +185,9 @@ function Works({}: Props) {
                 className='absolute bg-center px-14 rounded-xl'
               />
             </div>
-          </div>
-        ))}
+            </div>
+          );
+        })}
         {/* desktop preview image */}
 
         <div

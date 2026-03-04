@@ -1,40 +1,70 @@
-"use client"
+'use client';
 
-import { Canvas } from '@react-three/fiber'
-import { Planet } from '../components/Planet'
-import { AmbientLight } from 'three'
-import { Environment, Float, Lightformer } from '@react-three/drei'
-import { scale } from 'maath/dist/declarations/src/vector2'
-import { useMediaQuery } from 'react-responsive'
-import AnimatedHeaderSection from '../components/AnimatedHeaderSection'
+import { Canvas } from '@react-three/fiber';
+import { Planet } from '../components/Planet';
+import { Environment, Float, Lightformer } from '@react-three/drei';
+import { useMediaQuery } from 'react-responsive';
+import AnimatedHeaderSection from '../components/AnimatedHeaderSection';
 
-type Props = {}
-
-const Hero = (props: Props) => {
-  const isMobile = useMediaQuery({maxWidth:853})
-  const text = "I help growing brands and startup gain \n an unfair advantage through \n premium results driven website design"
+const Hero = () => {
+  const isMobile = useMediaQuery({ maxWidth: 853 });
+  const text =
+    'Web developer focused on Next.js and React \n building fast, SEO-friendly applications \n with clean architecture and modern UI';
 
   return (
-    <section id='home' className='flex flex-col justify-end min-h-screen'>
-        <AnimatedHeaderSection subtitle={'404 No Bugs Found'} text={text} title={"Shahoriar Ratul"} textColor={"text-black"}/>
-        <figure className='absolute inset-0 -z-50' style={{width:"100vw",height:"100vh"}}>
-            <Canvas shadows camera={{position:[0,0,-10], fov: 17.5 , near:1, far: 20 }}>
-            <ambientLight intensity={0.5} />
-            <Float speed={0.5}>
-                   <Planet scale={isMobile?0.7: 1}/>
-            </Float>
-                <Environment resolution={256}>
-                    <group rotation={[Math.PI/3, 4 , 1]}>
-                    <Lightformer form={"circle"} intensity={2} position={[8,5,-9]} scale={10}/>
-                    <Lightformer form={"circle"} intensity={2} position={[0,3,1]} scale={10}/>
-                    <Lightformer form={"circle"} intensity={2} position={[-5,-1,-1]} scale={10}/>
-                    <Lightformer form={"circle"} intensity={2} position={[10,1,0]} scale={16}/>
-
-                    </group>
-                </Environment>
-                </Canvas> 
-        </figure>
+    <section
+      id='home'
+      className='flex flex-col justify-end min-h-screen'
+    >
+      <AnimatedHeaderSection
+        subtitle={'Next.js • React.js • TypeScript'}
+        text={text}
+        title={'Shahoriar Ratul'}
+        textColor={'text-black'}
+      />
+      <figure
+        className='absolute inset-0 -z-50'
+        style={{ width: '100vw', height: '100vh' }}
+      >
+        <Canvas
+          shadows
+          camera={{ position: [0, 0, -10], fov: 17.5, near: 1, far: 20 }}
+        >
+          <ambientLight intensity={0.5} />
+          <Float speed={0.5}>
+            <Planet scale={isMobile ? 0.7 : 1} />
+          </Float>
+          <Environment resolution={256}>
+            <group rotation={[Math.PI / 3, 4, 1]}>
+              <Lightformer
+                form={'circle'}
+                intensity={2}
+                position={[8, 5, -9]}
+                scale={10}
+              />
+              <Lightformer
+                form={'circle'}
+                intensity={2}
+                position={[0, 3, 1]}
+                scale={10}
+              />
+              <Lightformer
+                form={'circle'}
+                intensity={2}
+                position={[-5, -1, -1]}
+                scale={10}
+              />
+              <Lightformer
+                form={'circle'}
+                intensity={2}
+                position={[10, 1, 0]}
+                scale={16}
+              />
+            </group>
+          </Environment>
+        </Canvas>
+      </figure>
     </section>
-  )
-}
-export default Hero
+  );
+};
+export default Hero;

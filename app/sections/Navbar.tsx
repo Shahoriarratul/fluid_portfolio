@@ -6,9 +6,7 @@ import { useGSAP } from '@gsap/react';
 
 import { Link } from 'react-scroll';
 
-type Props = {};
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
   const navRef = useRef(null);
   const linkRef = useRef<(HTMLDivElement | null)[]>([]);
   const contractRef = useRef(null);
@@ -136,7 +134,7 @@ const Navbar = (props: Props) => {
           <div className='font-light'>
             <p className='tracking-wider text-white/50'>E-mail</p>
             <p className='text-xl tracking-widest lowercase'>
-              shahoriar.ratul@gamil.com
+              shahoriar.ratul@gmail.com
             </p>
           </div>
           <div className='font-light'>
