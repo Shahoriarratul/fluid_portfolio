@@ -101,8 +101,9 @@ export const projects = [
     name: "Fast Pizza - Delivery App",
     description:
       "A fast and responsive pizza delivery interface built with vanilla React and CSS fundamentals.",
-    href: "https://github.com/Shahoriarratul",
-    image: "/assets/projects/plant-shop.jpg",
+    href: "https://fast-pizza-sigma.vercel.app/",
+    gitLink: "https://github.com/Shahoriarratul/Fast-Pizza",
+    image: "/assets/projects/Fast_pizza.png",
     bgImage: "/assets/backgrounds/curtains.jpg",
     frameworks: [
       { id: 1, name: "React" },
@@ -113,63 +114,18 @@ export const projects = [
   },
   {
     id: 3,
-    name: "Next.js App Architecture",
+    name: "Popcorn - Movie rating app",
     description:
-      "Hands-on experience with pages router, API routes, and scalable component patterns for maintainable frontend systems.",
-    href: "",
-    image: "/assets/projects/apple-tech-store.jpg",
-    bgImage: "/assets/backgrounds/map.jpg",
-    frameworks: [
-      { id: 1, name: "Next.js Pages Router" },
-      { id: 2, name: "TypeScript" },
-      { id: 3, name: "REST API Integration" },
-      { id: 4, name: "SEO Best Practices" },
-    ],
-  },
-  {
-    id: 4,
-    name: "Backend & API Integration",
-    description:
-      "Building backend-connected web applications with authentication, validation, and reliable data handling.",
-    href: "",
-    image: "/assets/projects/electronics-store.jpg",
-    bgImage: "/assets/backgrounds/poster.jpg",
-    frameworks: [
-      { id: 1, name: "Node.js" },
-      { id: 2, name: "Express.js" },
-      { id: 3, name: "Next.js API Routes" },
-      { id: 4, name: "Zod Validation" },
-    ],
-  },
-  {
-    id: 5,
-    name: "Data & State Management",
-    description:
-      "Implementing efficient data patterns across SQL/NoSQL stores and frontend state for responsive user experiences.",
-    href: "",
-    image: "/assets/projects/home-decor-store.jpg",
-    bgImage: "/assets/backgrounds/table.jpg",
-    frameworks: [
-      { id: 1, name: "MongoDB" },
-      { id: 2, name: "PostgreSQL" },
-      { id: 3, name: "Prisma" },
-      { id: 4, name: "Redux" },
-      { id: 5, name: "SWR" },
-    ],
-  },
-  {
-    id: 6,
-    name: "Academic & Research Foundation",
-    description:
-      "MSc student in High Integrity Systems and recipient of National Science and Technology Fellowship for research in opportunistic network routing.",
-    href: "",
-    image: "/assets/projects/game-store.jpg",
+      "A modern movie search and rating app with a cinematic UI, detailed movie views, and watched-list tracking with local storage.",
+    href: "https://use-pop-corn-ebon.vercel.app/",
+    gitLink: "https://github.com/Shahoriarratul/usePopCorn",
+    image: "/assets/projects/PopCorn.png",
     bgImage: "/assets/backgrounds/curtains.jpg",
     frameworks: [
-      { id: 1, name: "High Integrity Systems" },
-      { id: 2, name: "ICT" },
-      { id: 3, name: "IELTS C1" },
-      { id: 4, name: "Research Fellowship" },
+      { id: 1, name: "Next.js" },
+      { id: 2, name: "React" },
+      { id: 3, name: "Tailwind CSS" },
+      { id: 4, name: "TMDB API" },
     ],
   },
 ];
