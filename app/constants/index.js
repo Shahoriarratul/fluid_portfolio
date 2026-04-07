@@ -100,16 +100,17 @@ export const projects = [
     id: 2,
     name: "Fast Pizza - Delivery App",
     description:
-      "A fast and responsive pizza delivery interface built with vanilla React and CSS fundamentals.",
+      "A modern pizza-ordering web app with cart flow, order creation and tracking, geolocation-based address autofill, and responsive UX.",
     href: "https://fast-pizza-sigma.vercel.app/",
     gitLink: "https://github.com/Shahoriarratul/Fast-Pizza",
     image: "/assets/projects/Fast_pizza.png",
     bgImage: "/assets/backgrounds/curtains.jpg",
     frameworks: [
-      { id: 1, name: "React" },
-      { id: 2, name: "CSS" },
-      { id: 3, name: "UI Components" },
-      { id: 4, name: "Routing" },
+      { id: 1, name: "Next.js 15" },
+      { id: 2, name: "React 18" },
+      { id: 3, name: "TypeScript" },
+      { id: 4, name: "Redux Toolkit" },
+      { id: 5, name: "Tailwind CSS" },
     ],
   },
   {
